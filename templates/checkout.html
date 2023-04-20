@@ -1,0 +1,383 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+  
+    <!-- Breadcrumb section start -->
+    <section class="breadcrumb-section section-b-space">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3>Checkout</h3>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="index.html">
+                                    <i class="fas fa-home"></i>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb section end -->
+
+    <!-- Cart Section Start -->
+    <section class="section-b-space">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    
+                    <span class=" btn p-0 m-0 " id="pull1">
+                        <h3 class="mb-3 mt-3 d-inline-block">Billing address</h3>
+                        <span class=" btn fas fa-arrow-down mr-3 mb-1 d-none" id="pull-down1"></span>
+                      </span>
+                      {% if bill %}
+                      <div class="form-check ps-0 mt-3 custome-form-check mb-2">
+                        <input class="checkbox_animated" type="checkbox" id="old-bill">
+                        <label class="form-check-label checkout-label" for="flexCheckDefault11">Use existing billing address</label>
+                    </div>
+                      {% endif %}
+                     
+                    <div id="bill_add" class="m-0 p-0">
+                    <form class="needs-validation" id="checkout_form">
+                        
+                        <!-- billing address -->
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label for="fname" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="fname" placeholder="leave blank to use registered lastname">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lname" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lname" placeholder="leave blank to use registered lastname">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lname" class="form-label">Phone</label>
+                                <div class="input-group">
+                                    <span class="input-group-text phone" ></span>
+                                    <input type="text" class="form-control" placeholder="Phone" id="phone" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email" placeholder="example@example.com"
+                                    >
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address" aria-describedby="emailHelp"
+                                    placeholder="Street Address" >
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address for shipping updates.
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="address2" class="form-label">Address 2</label>
+                                <input type="text" class="form-control" id="address2" aria-describedby="emailHelp"
+                                    placeholder="House Address" >
+                            </div>
+
+                            <div class="col-md-5">
+                                <label for="validationCustom04" class="form-label">Country</label>
+                                <select class="form-select custome-form-select country-select" id="validationCustom04">
+                                    <option selected disabled value="">Choose...</option>
+                                    <option>United States</option>
+                                    <option>India</option>
+                                    <option>America</option>
+                                    <option>South America</option>
+                                    <option>Dubai</option>
+                                    <option>Hong Kong</option>
+                                    <option>Indonesia</option>
+                                    <option>Pakistan</option>
+                                    <option>Saudi Arabia</option>
+                                    <option>China</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a valid country.
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="validationCustom04" class="form-label">State</label>
+                                <select class="form-select custome-form-select state-select" id="validationCustom05">
+                                    <option selected disabled value="">Choose...</option>
+                                    <option>Bhutan</option>
+                                    <option>Burundi</option>
+                                    <option>Comoros</option>
+                                    <option>Dilhi</option>
+                                    <option>Mumbai</option>
+                                    <option>Surat</option>
+                                    <option>Abu & Ambaji</option>
+                                    <option>Japan</option>
+                                    <option>Cuba</option>
+                                    <option>Zambia</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please provide a valid state.
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="zip" class="form-label">Zip</label>
+                                <input type="text" class="form-control" id="zip" aria-describedby="emailHelp"
+                                    placeholder="1234 Main St">
+                            </div>
+                        </div>
+                    
+                        <hr class="my-lg-5 my-4">
+                    </div>
+                      <!-- billing address ends -->
+                      
+                      <!-- shipping address starts" -->
+                      <span class="btn p-0 m-0" id="pull2">
+                        <h3 class="mb-3 mt-3 d-inline-block" id="h-pull">Shipping address</h3>
+                        <span class="btn fas fa-arrow-down mr-3 mb-1 d-none" id="pull-down2"></span>
+                      </span>
+                    <div class="row m-0 p-0 mb-2">
+                      {% if ship %}
+                            <div class="form-check ps-0 mt-3 custome-form-check mb-2 col-md-6">
+                            <input class="checkbox_animated" type="checkbox" id="old-ship">
+                            <label class="form-check-label checkout-label" for="flexCheckDefault11">use existing shipping address</label>
+                            </div>
+                        {% endif %}
+                        <div class="form-check ps-0 mt-3 custome-form-check mb-2 col-md-6">
+                            <input class="checkbox_animated check-it same-ship" type="checkbox" id="same_ship">
+                            <label class="form-check-label checkout-label" for="flexCheckDefault11">same as billing address</label>
+                            </div>
+                    </div>
+                      
+                    <div id="ship_add" class="m-0 p-0">
+                      <div class="row g-4">
+                        <div class="col-md-6">
+                            <label for="fname" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="sfname" placeholder="ship to?. leave blank if same as shipping">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="lname" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="slname" placeholder="leave blank if same as shipping">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="lname" class="form-label">Phone</label>
+                            <div class="input-group">
+                                <span class="input-group-text sphone" id="sphone"></span>
+                                <input type="text" class="form-control" placeholder="Phone" id="sphone">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="semail" placeholder="example@example.com" >
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="saddress" aria-describedby="emailHelp"
+                                placeholder="Street address" >
+                            <div class="invalid-feedback">
+                                Please enter a valid street address for shipping updates.
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="saddress2" aria-describedby="emailHelp"
+                                placeholder="House Address" >
+                            <div class="invalid-feedback">
+                                Please enter a valid house address for shipping updates.
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <label for="validationCustom04" class="form-label">Country</label>
+                            <select class="form-select custome-form-select scountry-select" id="validationCustom04">
+                                <option selected disabled value="">Choose...</option>
+                                <option>United States</option>
+                                <option>India</option>
+                                <option>America</option>
+                                <option>South America</option>
+                                <option>Dubai</option>
+                                <option>Hong Kong</option>
+                                <option>Indonesia</option>
+                                <option>Pakistan</option>
+                                <option>Saudi Arabia</option>
+                                <option>China</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a valid country.
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="validationCustom04" class="form-label">State</label>
+                            <select class="form-select custome-form-select sstate-select" id="validationCustom05">
+                                <option selected disabled value="">Choose...</option>
+                                <option>Bhutan</option>
+                                <option>Burundi</option>
+                                <option>Comoros</option>
+                                <option>Dilhi</option>
+                                <option>Mumbai</option>
+                                <option>Surat</option>
+                                <option>Abu & Ambaji</option>
+                                <option>Japan</option>
+                                <option>Cuba</option>
+                                <option>Zambia</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please provide a valid state.
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="zip" class="form-label">Zip</label>
+                            <input type="text" class="form-control" id="szip" aria-describedby="emailHelp"
+                                placeholder="1234 Main St">
+                        </div>
+                    </div>
+                    
+
+                        <hr class="my-lg-5 my-4">
+                    </div>
+                        <h3 class="mb-3 mt-3">Payment</h3>
+
+                        <div class="d-block my-3">
+                            <div class="form-check custome-radio-box">
+                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="debit">
+                                <label class="form-check-label" for="debit">Debit card</label>
+                            </div>
+
+                            <div class="form-check custome-radio-box">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="paystack">
+                                <label class="form-check-label" for="paystack">PayStack</label>
+                            </div>
+                        </div>
+                        <div class="row g-4">
+                            <div class="col-md-6 ">
+                                <label for="expiration" class="form-label">account number</label>
+                                <input type="text" class="form-control" id="acct_num" placeholder="account number">
+                                <div class="invalid-feedback">account number</div>
+
+                            </div>
+                            <div class="col-md-6 mt-4">  
+                                <label for="cc-name" class="form-label">select bank</label>
+                                <select class="form-select custome-form-select sstate-select" id="bank_name">
+                                    <option selected disabled value="">Choose...</option>     
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="cc-name" class="form-label">email</label>
+                                <input type="text" class="form-control" id="acct_email">
+                                <div id="invalid-feedback" class="form-text">email</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="cc-number" class="form-label">amount</label>
+                                <input type="text" class="form-control" id="amnt">
+                                <div class="invalid-feedback">amount to be paid</div>
+                            </div>
+                          
+                           
+                        </div>
+                        <!-- <div class="row g-4">
+                            <div class="col-md-6">
+                                <label for="cc-name" class="form-label">Name on card</label>
+                                <input type="text" class="form-control" id="cc-name">
+                                <div id="emailHelp" class="form-text">Full name as displayed on card</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="cc-number" class="form-label">Credit card number</label>
+                                <input type="text" class="form-control" id="cc-number">
+                                <div class="invalid-feedback">Credit card number is required</div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="expiration" class="form-label">Expiration</label>
+                                <input type="text" class="form-control" id="cc-expiry" placeholder="mm/yy">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="cc-cvv" class="form-label">CVV</label>
+                                <input type="text" class="form-control" id="cc-cvv" placeholder="cvv">
+                            </div>
+                        </div> -->
+                        <button class="btn btn-solid-default mt-4" type="submit">Continue
+                            to checkout</button>
+                    </form>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="your-cart-box">
+                        <h3 class="mb-3 d-flex text-capitalize">Your cart<span
+                                class="badge bg-theme new-badge rounded-pill ms-auto bg-dark">{{ quantity }}</span>
+                        </h3>
+                        <ul class="list-group mb-3">
+                            
+                            <li class="list-group-item d-flex justify-content-between lh-condensed active">
+                                <div class="text-dark">
+                                    <h6 class="my-0">Promo code</h6>
+                                    <small>EXAMPLECODE</small>
+                                </div>
+                                <span>-$5</span>
+                            </li>
+                            <li class="list-group-item d-flex lh-condensed justify-content-between">
+                                <span class="fw-bold">Total (USD)</span>
+                                <strong>$20</strong>
+                            </li>
+                        </ul>
+
+                        <form class="card border-0">
+                            <div class="input-group custome-imput-group">
+                                <input type="text" class="form-control" placeholder="Promo code">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-solid-default rounded-0">Redeem</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Cart Section End -->
+
+    <!-- Subscribe Section Start -->
+    <section class="subscribe-section section-b-space">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-6">
+                    <div class="subscribe-details">
+                        <h2 class="mb-3">Subscribe Our News</h2>
+                        <h6 class="font-light">Subscribe and receive our newsletters to follow the news about our fresh
+                            and fantastic Products.</h6>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mt-md-0 mt-3">
+                    <div class="subsribe-input">
+                        <div class="input-group">
+                            <input type="text" class="form-control subscribe-input" placeholder="Your Email Address">
+                            <button class="btn btn-solid-default" type="button">Button</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://js.paystack.co/v1/inline.js"></script> 
+
+    {% block extrascript %}
+      <script  defer src={% static 'assets/js/main/p-product-checkout.js' %}></script>
+
+    {% endblock extrascript %}
+    <!-- Subscribe Section End -->
+    {% endblock content %}
