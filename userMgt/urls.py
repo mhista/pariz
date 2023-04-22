@@ -1,5 +1,5 @@
 from django.urls import path,include
-from .views import createAddress
+from userMgt.views.CheckoutViews import createAddress
 app_name = 'profile'
 
 

@@ -1,0 +1,43 @@
+.minus, .plus, .item-value{
+    margin-right: 15px !important;
+    font-size: 1000;
+    font-size: 18px;
+}
+.minus, .plus{
+    font-size: 22px;
+    cursor: pointer;
+    padding: 1px 10px;
+    background-color: #eff2f7;
+
+}
+.t-minus, .t-plus, .t-item-value{
+    margin: 0px !important;
+    font-size: 500;
+    font-size: 10px;
+}
+.t-minus{
+    margin-top: -15px !important;
+}
+.t-plus{
+    margin-bottom: -15px !important;
+}
+.t-minus, .t-plus{
+    font-size: 8px;
+    cursor: pointer;
+    padding: 0px;
+    background-color: #eff2f7;
+
+}
+@media only screen and (max-width: 768px){
+    .minus, .plus,.item-value{
+        margin-right: 0px !important;
+        font-size: 15px;
+        z-index: 1;
+
+    }
+    .prod,.desc{
+        padding-left: 4rem !important;
+        font-size: 15px !important;
+
+    }
+}

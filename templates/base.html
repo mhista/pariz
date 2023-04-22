@@ -4,12 +4,12 @@
 <head>
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="assets/images/favicon/4.png" %} type="image/x-icon">
-    <link rel="apple-touch-icon" href="assets/images/favicon/4.png" %} %}>
+    <link rel="apple-touch-icon" href="assets/images/favicon/4.png" %}>
     <meta name="theme-color" content="#e87316">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Voxo">
-    <meta name="msapplication-TileImage" content="assets/images/favicon/4.png" %} %}>
+    <meta name="msapplication-TileImage" content="assets/images/favicon/4.png" >
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -49,7 +49,21 @@
     <link id="color-link" rel="stylesheet" type="text/css" href={% static "assets/css/demo2.css" %}>
     <link id="color-link" rel="stylesheet" type="text/css" href={% static "assets/css/edit.css" %}>
 
-
+    <style>
+    
+        .alerter{
+          width: 50%;
+          z-index:11111;
+          opacity:1;
+          top: 5rem !important;
+          position: absolute;
+          left:50%;
+        }
+        .sec-user-style{
+         height:50px; 
+         width:50px !important;
+        }
+      </style>
 
 </head>
 
@@ -128,12 +142,19 @@
                                         </div>
                                         <div class="onhover-div profile-dropdown">
                                             <ul>
-                                                <li>
-                                                    <a href="log-in.html" class="d-block">Login</a>
-                                                </li>
-                                                <li>
-                                                    <a href="sign-up.html" class="d-block">Register</a>
-                                                </li>
+                                                {% if not request.user.is_authenticated %}
+                                                    <li>
+                                                        <a href="{% url 'account_login' %}" class="d-block">Login</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'account_signup' %}" class="d-block">Register</a>
+                                                    </li>
+                                                    {% else %}
+                                                    <li>
+                                                        <a href="{% url 'account_logout' %}" class="d-block">logout</a>
+                                                    </li>
+                                                {% endif %}
+                                               
                                             </ul>
                                         </div>
                                     </li>
@@ -321,6 +342,23 @@
         </ul>
     </div>
     <!-- mobile fix menu end -->
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible show fade alerter text-dark" role="alert" id="dismiss">
+      <div class="alert-body">
+        {{ message }}
+        <button class="close" data-dismiss="alert" aria-label='close' onclick="closeMessage()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+    <script>
+        closeMessage = ()=>{
+            $('#dismiss').fadeOut()
+        };
+    </script>
+    {% endfor %}
+    {% endif %}
 {% block content %}
   
 {% endblock content %}

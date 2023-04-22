@@ -8,12 +8,12 @@ from parizian.mixins import SuperUserRequired
 from parizian.models import Category, Item, OrderItem, Order
 from django.http import JsonResponse,HttpResponseBadRequest
 from stores.models import Stores
-class IndexView(LoginRequiredMixin,generic.View):
+class IndexView(generic.View):
   
     def get(self,request,*args,**kwargs):
-        queryset = OrderItem.objects.filter(user=request.user,order__ordered=False).reverse()[:3]
-        context = {'orderItem':queryset}
-        return render(request,'index.html',context)
+        # queryset = OrderItem.objects.filter(user=request.user,order__ordered=False).reverse()[:3]
+        # context = {'orderItem':queryset}
+        return render(request,'index.html')
     
 class JsonItemList(LoginRequiredMixin,View):
     # this view uses an ajax call to update the list of items in the home page on a button click
