@@ -15,7 +15,7 @@ import os
 import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+# ALLOWED_HOSTS = ['innochris.pythonanywhere.com']
 env = environ.Env()
 READ_DOT_ENV_FILE =env.bool('READ_DOT_ENV_FILE', default=True)
 if READ_DOT_ENV_FILE :
@@ -112,6 +112,15 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '3306'
     }
+  
+#    'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'innochris$parizian',
+#         'USER': 'innochris',
+#         'PASSWORD': 'parizai1234',
+#         'HOST': 'innochris.mysql.pythonanywhere-services.com'
+#     }
+  
 }
 
 
@@ -193,3 +202,4 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+ALLOWED_HOSTS = ['innochris.pythonanywhere.com']

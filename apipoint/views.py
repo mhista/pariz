@@ -45,16 +45,56 @@ class VerifyPayment(View):
         else:
             messages.error(self.request, "verification failed")
         return redirect('initiate-payment')
-def createc(request):
-    pass
-    # from parizian.models import Item,Coupon
+def save_items(request):
+    from parizian.models import Category,Item
+    from stores.models import Stores
+    import requests
+    import json
+    import random
 
-    # item = Item.objects.all()
+    base_url = 'https://fakestoreapi.com/'
+    # base_url = 'https://api.storerestapi.com/'
     
-    # for ite in range(1,19,2):
-       
-    #     # item[ite].has_coupon = True
-    #     item[ite].save()
+    path = 'products'
+    path2 = 'products/categories'
+    url = base_url+path
+    url2 = base_url+path2
+    limit=''
+    params = {
+        'limit':limit
+    }
+    response =requests.get(url)
+    response2 = requests.get(url=url2)
+    res = response.json()
+    res2 = response2.json()
+    # print(res)
+    print(res2)
+    cat = Category.objects.all()
+    for x in res:
+        print(x)
+        item = Item(
+            name=x['title'],
+            description = x['description'],
+            store = Stores.objects.first(),
+            category = cat[random.randrange(len(cat))],
+            price =  random.randint(600,2000),
+            discount_price = random.randint(300,500),
+            quantity=random.randint(5,15)
+        )
+        item.save()
+        
+    return redirect(request,'index.html')
+    
+def createc(request):
+    from parizian.models import Item,Coupon
+
+    item = Item.objects.all()
+    
+    for ite in range(1,19,2):
+        cap = Coupon()
+        cap.save()
+        # item[ite].has_coupon = True
+        item[ite].save()
         
             
 

@@ -46,45 +46,7 @@ class JsonItemList(LoginRequiredMixin,View):
     
 class landing(generic.TemplateView):
     template_name = 'product-checkout.html'
-    pass
-def save_items(request):
-    # import requests
-    # import json
-    # import random
-
-    # base_url = 'https://fakestoreapi.com/'
-    # # base_url = 'https://api.storerestapi.com/'
     
-    # path = 'products'
-    # path2 = 'products/categories'
-    # url = base_url+path
-    # url2 = base_url+path2
-    # limit=''
-    # params = {
-    #     'limit':limit
-    # }
-    # response =requests.get(url)
-    # response2 = requests.get(url=url2)
-    # res = response.json()
-    # res2 = response2.json()
-    # # print(res)
-    # print(res2)
-    # cat = Category.objects.all()
-    # for x in res:
-    #     print(x)
-    #     item = Item(
-    #         name=x['title'],
-    #         description = x['description'],
-    #         store = Stores.objects.first(),
-    #         category = cat[random.randrange(len(cat))],
-    #         price =  random.randint(600,2000),
-    #         discount_price = random.randint(300,500),
-    #         quantity=random.randint(5,15)
-    #     )
-    #     item.save()
-        
-    # return redirect(request,'index.html')
-    pass
    
 class ItemDetail(LoginRequiredMixin,generic.DetailView):
     # get the item detail

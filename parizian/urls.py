@@ -16,7 +16,6 @@ from .views import (
     RemoveFromCart,
     UserCart,
     SearchQuery,
-    save_items,
     ClearCart
     
     )
@@ -33,7 +32,6 @@ urlpatterns = [
     path('product-cart/', ProductCart.as_view(), name='product-cart'),
     
     path('search/<str:data>',SearchQuery.as_view(),name='search-item'),
-    path('save/',save_items,name='save-item'),
 ]
 jsonPatterns = [
     path('add-to-cart/', AddToCart.as_view(), name='add-to-cart'),
