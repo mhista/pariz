@@ -101,7 +101,7 @@ checkout_form.submit((e)=>{
 // checks if the user should use same billing address for shipping address
     var x = document.getElementById('old-bill');
     var y = document.getElementById('old-ship');
-    if (x.checked==true && y.checked == true){
+    if (x.checked==true || y.checked == true || (x.checked==true && y.checked == true)){
         cardFetchAPI()
     }
 

@@ -15,7 +15,7 @@ import os
 import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-# ALLOWED_HOSTS = ['innochris.pythonanywhere.com']
+# ALLOWED_HOSTS = ['innochris.pythonanywhere.com']  
 env = environ.Env()
 READ_DOT_ENV_FILE =env.bool('READ_DOT_ENV_FILE', default=True)
 if READ_DOT_ENV_FILE :
@@ -28,8 +28,8 @@ SECRET_KEY = 'django-insecure-!e&^#dvjzy9j2w^6ns!a3fhq6*1544!wx2px2x^vs(pj+&j1v5
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['innochris.pythonanywhere.com','https://api.paystack.co']
+ALLOWED_HOSTS = ["*"]
 AUTHENTICATION_BACKENDS = [
         
      
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'stores',
     
     # 3rd party appps
+    # 'corsheaders',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -66,7 +67,7 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 3
-
+# SITE_ID = 4
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -170,7 +171,7 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR,'assets')
 MEDIA_URL = '/pickafrica/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -202,4 +203,13 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-ALLOWED_HOSTS = ['innochris.pythonanywhere.com']
+# ALLOWED_HOSTS = ['innochris.pythonanywhere.com']
+# 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
+
+# providers
+
+
+# CORS_ALLOWED_ORIGINS = [
+#     'https://api.paystack.co',
+#     'http://127.0.0.1:8000'
+#     ]

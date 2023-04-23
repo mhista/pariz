@@ -67,8 +67,8 @@ def save_items(request):
     response2 = requests.get(url=url2)
     res = response.json()
     res2 = response2.json()
-    # print(res)
-    print(res2)
+    print(res)
+    # print(res2)
     cat = Category.objects.all()
     for x in res:
         print(x)

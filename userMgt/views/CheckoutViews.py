@@ -20,39 +20,39 @@ class createAddress(LoginRequiredMixin,generic.View):
 
     def validate_form(self,data):
         # validates the form, and checking for errors
-        if data is None:
-            return JsonResponse({'data':'none'})
-        else:     
-            if len(data) == 3:
-                zip = data[0]['zip']
-                zip2 = data[1]["szip"]
-                ship_phone = data[1]["sphone"]  
-                bill_phone = data[0]['phone']  
-                cc_cvv = data[2]["cc_cvv"]
-                cc_expiry = data[2]["cc_expiry"]
-                check2 = [bill_phone,zip,zip2,ship_phone,cc_cvv,cc_expiry]
-                o = re.search(self.re_alpha,(self.y for self.y in check2))  
-                if o:
-                    return JsonResponse({'data':f"only numbers allowed in {self.y}"})
-                elif len(ship_phone) >15:
-                    return JsonResponse({'data','invalid phone number for ship address please correct'})
-                elif len(bill_phone)  > 15:
-                    return JsonResponse({'data','invalid phone number for billing address please correct'})
-                else:
-                    return self.save_billing_info(data)
-            else:  
-                zip = data[0]["zip"]
-                cc_cvv = data[1]["cc_cvv"]
-                cc_expiry = data[1]["cc_expiry"]
-                bill_phone = data[0]['phone']   
-                num_check = [zip,cc_cvv,cc_expiry,bill_phone]
-                p = re.search(self.re_alpha,(self.x for self.x in num_check))
-                if p:
-                    return JsonResponse({'data':f"only numbers allowed in {self.x}"})
-                elif len(bill_phone)  > 15:
-                    return JsonResponse({'data','invalid phone number for billing address please correct'})
-                else:
-                    return self.save_billing_info(data)
+        # if data is None:
+        #     return JsonResponse({'data':'none'})
+        # else:     
+        #     if len(data) == 3:
+        #         zip = data[0]['zip']
+        #         zip2 = data[1]["szip"]
+        #         ship_phone = data[1]["sphone"]  
+        #         bill_phone = data[0]['phone']  
+        #         # cc_cvv = data[2]["cc_cvv"]
+        #         # cc_expiry = data[2]["cc_expiry"]
+        #         check2 = [bill_phone,zip,zip2,ship_phone,]
+        #         o = re.search(self.re_alpha,(self.y for self.y in check2))  
+        #         if o:
+        #             return JsonResponse({'data':f"only numbers allowed in {self.y}"})
+        #         elif len(ship_phone) >15:
+        #             return JsonResponse({'data','invalid phone number for ship address please correct'})
+        #         elif len(bill_phone)  > 15:
+        #             return JsonResponse({'data','invalid phone number for billing address please correct'})
+        #         else:
+        #             return self.save_billing_info(data)
+        #     else:  
+        #         zip = data[0]["zip"]
+        #         # cc_cvv = data[1]["cc_cvv"]
+        #         # cc_expiry = data[1]["cc_expiry"]
+        #         bill_phone = data[0]['phone']   
+        #         num_check = [zip,bill_phone]
+        #         p = re.search(self.re_alpha,(self.x for self.x in num_check))
+        #         if p:
+        #             return JsonResponse({'data':f"only numbers allowed in {self.x}"})
+        #         elif len(bill_phone)  > 15:
+        #             return JsonResponse({'data','invalid phone number for billing address please correct'})
+        #         else:
+        return self.save_billing_info(data)
         
     def save_billing_info(self,list_data):
         '''
